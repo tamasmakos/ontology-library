@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:seon="dev.nemo.inf.ufes.br/seon/SEON.owl#">
+  <owl:Ontology rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#"/>
+  <owl:AnnotationProperty rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#ontology"/>
+  <owl:AnnotationProperty rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#stereotype"/>
+  <owl:Class rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#EX::Agent">
+    <seon:ontology>EX</seon:ontology>
+    <rdfs:comment>An agent.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#EX::Person">
+    <seon:ontology>EX</seon:ontology>
+    <seon:stereotype>kind</seon:stereotype>
+    <rdfs:comment>A person.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="dev.nemo.inf.ufes.br/seon/SEON.owl#EX::Agent"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="dev.nemo.inf.ufes.br/seon/SEON.owl#knows.Person+Person">
+    <rdfs:domain rdf:resource="dev.nemo.inf.ufes.br/seon/SEON.owl#EX::Person"/>
+    <rdfs:range rdf:resource="dev.nemo.inf.ufes.br/seon/SEON.owl#EX::Person"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

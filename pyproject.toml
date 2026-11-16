@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ontology-library"
+version = "0.1.0"
+description = "Collect public ontologies and load them through the processrecall SEON parser."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = ["rdflib>=7.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ontology_library*", "processrecall*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+ontology_library = ["py.typed", "data/manifest.json", "data/vendor/*"]
+"processrecall.ontology" = ["py.typed", "UPSTREAM.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
