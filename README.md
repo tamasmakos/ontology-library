@@ -162,6 +162,22 @@ Size, not license. These are useful and, where noted, openly licensed. They are 
 
 Schema.org is in the batch (about 1.5 MB, CC BY-SA 3.0). It is a vocabulary, not a dump. Derivatives of that file stay under CC BY-SA 3.0.
 
+## Browse
+
+`docs/` is a static site: an index of the manifest, and one page per ontology. Search a label, then read that term’s description, type, IRI, and neighbors. Schema.org stays a list plus the selected neighborhood. The graph files are this library’s JSON export, one file per ontology, written by:
+
+```bash
+python scripts/build_pages.py
+```
+
+Publish the site with GitHub Pages from the default branch only:
+
+1. Settings → Pages.
+2. Build and deployment: Deploy from a branch.
+3. Branch `main`, folder `/docs`. Save.
+
+Styles, ontology pages, and graph files use relative links, so the same `docs/` folder works at `https://tamasmakos.github.io/ontology-library/`, on the Vercel preview (`vercel.json` publishes `docs/`), and when `docs/index.html` is opened locally. Opening the folder as files cannot `fetch` JSON, so each JSON file has a sibling `.js` script for that case. Do not point Pages at a feature branch.
+
 ## Tests
 
 ```bash
