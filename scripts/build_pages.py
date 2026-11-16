@@ -33,6 +33,11 @@ SUMMARIES = {
 }
 
 
+def _js(name: str, payload: object) -> str:
+    body = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
+    return f"globalThis.{name} = {body};\n"
+
+
 def main() -> None:
     GRAPHS.mkdir(parents=True, exist_ok=True)
     rows = []
@@ -41,7 +46,9 @@ def main() -> None:
         if not summary:
             raise SystemExit(f"no page summary for {record.id}")
         graph = load_ontology(record.id)
-        (GRAPHS / f"{record.id}.json").write_text(to_json(graph, indent=None), encoding="utf-8")
+        payload = json.loads(to_json(graph, indent=None))
+        (GRAPHS / f"{record.id}.json").write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
+        (GRAPHS / f"{record.id}.js").write_text(_js("ONTOLOGY_GRAPH", payload), encoding="utf-8")
         counts = {"class": 0, "property": 0, "individual": 0, "datatype": 0}
         for node in graph.nodes:
             for kind in node.types:
@@ -63,10 +70,12 @@ def main() -> None:
             }
         )
         print(f"{record.id}: {len(graph.nodes)} nodes, {len(graph.edges)} edges")
+    catalog = {"ontologies": rows}
     (DOCS / "catalog.json").write_text(
-        json.dumps({"ontologies": rows}, indent=2, ensure_ascii=False) + "\n",
+        json.dumps(catalog, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
+    (DOCS / "catalog.js").write_text(_js("ONTOLOGY_CATALOG", catalog), encoding="utf-8")
 
 
 if __name__ == "__main__":

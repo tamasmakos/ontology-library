@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 async function loadIndex() {
   const main = document.getElementById("catalog");
   try {
-    state.catalog = await fetchJson("catalog.json");
+    state.catalog = await loadData("catalog.json", "ONTOLOGY_CATALOG");
   } catch (error) {
     main.textContent = `The catalog could not be loaded. ${error.message}`;
     return;
@@ -76,14 +76,14 @@ async function loadOntology() {
     return;
   }
   try {
-    state.catalog = await fetchJson("catalog.json");
+    state.catalog = await loadData("catalog.json", "ONTOLOGY_CATALOG");
     state.record = state.catalog.ontologies.find((row) => row.id === id);
     if (!state.record) throw new Error(`No ontology named ${id}.`);
     title.textContent = state.record.name;
     document.title = state.record.name;
     document.getElementById("summary").textContent = state.record.summary;
     renderMeta(state.record);
-    state.graph = await fetchJson(`graphs/${encodeURIComponent(id)}.json`);
+    state.graph = await loadData(`graphs/${encodeURIComponent(id)}.json`, "ONTOLOGY_GRAPH");
   } catch (error) {
     title.textContent = "Could not open this ontology";
     document.getElementById("summary").textContent = error.message;
@@ -343,8 +343,26 @@ function formatName(format) {
   return format;
 }
 
-async function fetchJson(path) {
-  const response = await fetch(path);
-  if (!response.ok) throw new Error(`${path} returned ${response.status}.`);
-  return response.json();
+async function loadData(jsonPath, globalName) {
+  if (jsonPath.startsWith("/")) throw new Error(`Root-absolute path ${jsonPath}`);
+  if (location.protocol !== "file:") {
+    const response = await fetch(jsonPath);
+    if (!response.ok) throw new Error(`${jsonPath} returned ${response.status}.`);
+    return response.json();
+  }
+  const scriptPath = jsonPath.replace(/\.json$/, ".js");
+  await loadScript(scriptPath);
+  const data = globalThis[globalName];
+  if (!data) throw new Error(`${scriptPath} did not load.`);
+  return data;
+}
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Could not load ${src}`));
+    document.head.append(script);
+  });
 }

@@ -176,7 +176,7 @@ Publish the site with GitHub Pages from the default branch only:
 2. Build and deployment: Deploy from a branch.
 3. Branch `main`, folder `/docs`. Save.
 
-The pages use relative links, so they work when that folder is published. The address is `https://tamasmakos.github.io/ontology-library/`. Do not point Pages at a feature branch.
+Styles, ontology pages, and graph files use relative links, so the same `docs/` folder works at `https://tamasmakos.github.io/ontology-library/` and when `docs/index.html` is opened locally. Opening the folder as files cannot `fetch` JSON, so each JSON file has a sibling `.js` script for that case. Do not point Pages at a feature branch.
 
 ## Tests
 
