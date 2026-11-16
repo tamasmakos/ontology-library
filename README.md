@@ -6,19 +6,16 @@ through one existing parser into a single agent-ready graph.
 
 The parser is `processrecall.ontology.seon` from
 [processrecall-research](https://github.com/tamasmakos/processrecall-research)
-(`main` at `4493f215b4ef7ba500e4bc9a536f5739a03d63aa`). It is copied unchanged
-under `src/processrecall/ontology/seon`. This library calls `read_owl` and
-`digest`. It does not implement a second RDF, Turtle, JSON-LD, N-Triples, or
-OBO reader.
+(`main` at `4493f215b4ef7ba500e4bc9a536f5739a03d63aa`), copied under
+`src/processrecall/ontology/seon`. This library calls `read_owl` and `digest`.
+It does not add a second parser.
 
-That parser was written for the SEON 1.0.5 generator. `read_owl` accepts four
-RDF/XML constructs in the SEON namespace (`owl:Ontology`, `owl:Class`,
-`owl:ObjectProperty`, `owl:AnnotationProperty`) and refuses anything else.
-`digest` reads a pinned SEON directory (`SEON.owl`, `info.csv`, and the HTML
-pages). Catalog files are still handed to that parser. Most of them are
-refused, because they are ordinary OWL, Turtle, or JSON-LD rather than SEON's
-dialect. The refusal is the parser's `DigestError` or XML parse error, wrapped
-as `OntologyLoadError`.
+Files in the SEON namespace stay on the original reader. That reader accepts
+four RDF/XML constructs (`owl:Ontology`, `owl:Class`, `owl:ObjectProperty`,
+`owl:AnnotationProperty`) and refuses anything else. `digest` reads a pinned
+SEON directory (`SEON.owl`, `info.csv`, and the HTML pages). RDF/XML, Turtle,
+and JSON-LD that are not in that namespace are read by the same `read_owl`
+into the same model. A file the reader cannot parse raises `OntologyLoadError`.
 
 ## Install
 
@@ -40,33 +37,37 @@ Graph
   edges: Edge[]
 
 Node
-  id: str                          parser key. A class is "EX::Person". A property is the
-                                   association name, for example "knows.Person+Person".
+  id: str                          parser key. A SEON class is "EX::Person". A SEON
+                                   property is the association name, for example
+                                   "knows.Person+Person". A public term uses its IRI.
   iri: str                         original IRI. SEON IRIs are built the way
                                    processrecall.ontology.seon.network builds them.
   label: str | null
-  description: str | null          rdfs:comment for a class the parser accepted
-  types: list                      "class" or "property". "individual" and "datatype"
-                                   are part of the schema; this parser does not emit them.
+  description: str | null          comment or definition the parser kept
+  types: list                      "class", "property", "individual", and/or "datatype"
   provenance
     source_ontology_id: str        catalog id
     original_iri: str
 
 Edge
-  id: str                          "specializes:<child>:<parent>" or "relation:<association>"
+  id: str                          "specializes:<child>:<parent>", "relation:<property>",
+                                   "domain:<property>:<class>", "range:<property>:<class>",
+                                   or "type:<individual>:<class>"
   source: str                      node id
   target: str                      node id
-  label: str | null                "specializes", or the association name
+  label: str | null                "specializes", "domain", "range", "type", or the property label
   description: str | null
   types: ["property"]
   provenance
     source_ontology_id: str
-    original_iri: str              rdfs:subClassOf, or the association IRI
+    original_iri: str              rdfs:subClassOf, rdfs:subPropertyOf, rdfs:domain,
+                                   rdfs:range, rdf:type, or the property IRI
 ```
 
-`specializes` is the parser's name for `rdfs:subClassOf`. A relation edge is one
-SEON object property with one domain and one range. Node and edge ids are stable
-across repeated parses of the same file.
+`specializes` is `rdfs:subClassOf` for classes and `rdfs:subPropertyOf` for
+properties. A relation edge is a property with exactly one domain and one range.
+Public properties also keep a domain edge and a range edge when those ends are
+IRIs. Node and edge ids are stable across repeated parses of the same file.
 
 `format="seon"` calls `digest` on a directory and projects each concept node in
 that document into the same shape.
@@ -79,15 +80,14 @@ from ontology_library import list_ontologies, load_ontology, parse, to_json, to_
 for record in list_ontologies():
     print(record.id, record.license, record.format)
 
-# Catalog files are passed to read_owl. SEON's dialect is what succeeds.
 graph = parse("tests/fixtures/seon_min.owl", "rdfxml", ontology_id="example")
 print(to_json(graph))
 print(to_jsonl(graph))
 
-load_ontology("bfo")  # OntologyLoadError: the research parser refused the file
+skos = load_ontology("skos")
 ```
 
-`load_ontology` raises `OntologyLoadError` when the research parser refuses the
+`load_ontology` raises `OntologyLoadError` when `read_owl` cannot parse the
 file. `OntologyLookupError` means the id is not in the manifest.
 
 To parse a file that is not in the manifest:
@@ -169,4 +169,4 @@ pip install -e ".[dev]"
 pytest
 ```
 
-Tests use small fixtures. They do not parse the vendored ontologies.
+Tests cover the SEON fixture and one real vendored file of each format: `skos.rdf`, `rdfs.ttl`, and `schema.jsonld`. They also load every manifest entry.

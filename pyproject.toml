@@ -9,7 +9,7 @@ description = "Collect public ontologies and load them through the processrecall
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
-dependencies = []
+dependencies = ["rdflib>=7.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]

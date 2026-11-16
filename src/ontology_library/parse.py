@@ -1,7 +1,8 @@
 """Run a source through the processrecall SEON parser.
 
 `read_owl` and `digest` are imported from that package and called as they are.
-Nothing here reads triples on its own.
+Nothing here reads triples on its own. `read_owl` keeps the strict SEON reader
+for the SEON namespace and reads RDF/XML, Turtle, and JSON-LD into the same model.
 """
 
 from __future__ import annotations
@@ -16,8 +17,7 @@ from processrecall.ontology.seon.owl import read_owl
 from ontology_library.graph import Graph, graph_from_digest, graph_from_owl
 
 SEON_FORMATS = frozenset({"seon"})
-# Recorded on the manifest. Every one of these is handed to read_owl; the SEON
-# parser accepts only its own RDF/XML dialect and refuses the rest.
+# Recorded on the manifest. Every one of these is handed to read_owl.
 PARSER_FORMATS = frozenset(
     {
         "rdfxml",

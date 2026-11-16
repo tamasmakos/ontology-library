@@ -2,10 +2,11 @@
 
 The library code under `src/ontology_library` is MIT. See `LICENSE`.
 
-`src/processrecall/ontology/seon` is copied unchanged from
+`src/processrecall/ontology/seon` is copied from
 https://github.com/tamasmakos/processrecall-research at
-`4493f215b4ef7ba500e4bc9a536f5739a03d63aa`. That repository does not declare a
-license. The modules are included so this package can call them.
+`4493f215b4ef7ba500e4bc9a536f5739a03d63aa`. `owl.py` keeps that SEON reader and
+also reads RDF/XML, Turtle, and JSON-LD into the same model. That repository
+does not declare a license. The modules are included so this package can call them.
 
 Vendored ontology bytes keep their upstream licenses. Do not treat them as MIT.
 

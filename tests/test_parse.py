@@ -37,17 +37,22 @@ def test_seon_fixture_projects_classes_and_associations() -> None:
     assert specializes.provenance.original_iri.endswith("subClassOf")
 
 
-def test_plain_owl_is_refused_by_the_research_parser() -> None:
-    with pytest.raises(OntologyLoadError) as caught:
-        parse(FIXTURES / "not_seon.owl", "rdfxml", ontology_id="example")
-    assert isinstance(caught.value.__cause__, Exception)
-    assert "read_owl" in str(caught.value)
+def test_plain_owl_uses_the_same_reader() -> None:
+    graph = parse(FIXTURES / "not_seon.owl", "rdfxml", ontology_id="example")
+    by_id = {node.id: node for node in graph.nodes}
+    person = by_id["http://example.org/Person"]
+    assert person.types == ("class",)
+    assert person.iri == "http://example.org/Person"
+    assert person.provenance.source_ontology_id == "example"
+    assert graph.provenance["parser"] == "processrecall.ontology.seon.read_owl"
 
 
-def test_non_xml_is_handed_to_the_same_parser() -> None:
-    with pytest.raises(OntologyLoadError) as caught:
-        parse(FIXTURES / "not_xml.ttl", "turtle", ontology_id="example")
-    assert "read_owl" in str(caught.value)
+def test_turtle_uses_the_same_reader() -> None:
+    graph = parse(FIXTURES / "not_xml.ttl", "turtle", ontology_id="example")
+    by_id = {node.id: node for node in graph.nodes}
+    person = by_id["http://example.org/Person"]
+    assert "individual" in person.types
+    assert person.provenance.original_iri == "http://example.org/Person"
 
 
 def test_seon_directory_calls_digest(tmp_path: Path) -> None:
