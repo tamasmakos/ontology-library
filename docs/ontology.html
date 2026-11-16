@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ontology</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body data-page="ontology">
+  <header class="top">
+    <p class="mark"><a href="index.html">Ontology library</a></p>
+    <h1 id="title">Loading…</h1>
+    <p class="lede" id="summary"></p>
+    <p class="meta" id="meta"></p>
+  </header>
+  <main class="split">
+    <section class="finder" aria-labelledby="finder-label">
+      <h2 id="finder-label">Terms</h2>
+      <label for="q">Search by label</label>
+      <input id="q" type="search" autocomplete="off" placeholder="Person, interval, continuant…">
+      <div id="filters" class="filters"></div>
+      <p id="match-count" class="hint"></p>
+      <ul id="results"></ul>
+    </section>
+    <section class="detail" id="detail" aria-live="polite">
+      <p class="hint">Select a term.</p>
+    </section>
+  </main>
+  <script src="site.js"></script>
+</body>
+</html>

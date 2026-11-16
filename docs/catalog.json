@@ -1,0 +1,256 @@
+{
+  "ontologies": [
+    {
+      "id": "skos",
+      "name": "SKOS",
+      "summary": "A model for thesauri, taxonomies, and other knowledge organization systems.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/skos-reference/",
+      "source_url": "https://www.w3.org/2009/08/skos-reference/skos.rdf",
+      "format": "rdfxml",
+      "nodes": 34,
+      "edges": 39,
+      "counts": {
+        "class": 6,
+        "property": 28,
+        "individual": 0,
+        "datatype": 0
+      }
+    },
+    {
+      "id": "foaf",
+      "name": "Friend of a Friend",
+      "summary": "A vocabulary for people, groups, documents, and the links between them.",
+      "license": "CC BY 1.0",
+      "license_url": "http://creativecommons.org/licenses/by/1.0/",
+      "homepage": "http://xmlns.com/foaf/spec/",
+      "source_url": "http://xmlns.com/foaf/spec/index.rdf",
+      "format": "rdfxml",
+      "nodes": 87,
+      "edges": 187,
+      "counts": {
+        "class": 19,
+        "property": 68,
+        "individual": 0,
+        "datatype": 0
+      }
+    },
+    {
+      "id": "sioc",
+      "name": "SIOC Core Ontology",
+      "summary": "Terms for online communities: forums, posts, users, and their connections.",
+      "license": "CC BY 1.0",
+      "license_url": "http://creativecommons.org/licenses/by/1.0/",
+      "homepage": "http://sioc-project.org/",
+      "source_url": "http://rdfs.org/sioc/ns",
+      "format": "rdfxml",
+      "nodes": 116,
+      "edges": 195,
+      "counts": {
+        "class": 20,
+        "property": 94,
+        "individual": 1,
+        "datatype": 1
+      }
+    },
+    {
+      "id": "goodrelations",
+      "name": "GoodRelations",
+      "summary": "An e-commerce vocabulary for products, offers, prices, and businesses.",
+      "license": "CC BY 3.0",
+      "license_url": "http://creativecommons.org/licenses/by/3.0/",
+      "homepage": "http://www.heppnetz.de/projects/goodrelations/",
+      "source_url": "http://purl.org/goodrelations/v1.owl",
+      "format": "rdfxml",
+      "nodes": 202,
+      "edges": 256,
+      "counts": {
+        "class": 38,
+        "property": 112,
+        "individual": 46,
+        "datatype": 6
+      }
+    },
+    {
+      "id": "bfo",
+      "name": "Basic Formal Ontology",
+      "summary": "An upper ontology that divides entities into continuants and occurrents.",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "homepage": "http://basic-formal-ontology.org/",
+      "source_url": "http://purl.obolibrary.org/obo/bfo.owl",
+      "format": "rdfxml",
+      "nodes": 59,
+      "edges": 37,
+      "counts": {
+        "class": 37,
+        "property": 22,
+        "individual": 0,
+        "datatype": 0
+      }
+    },
+    {
+      "id": "owl-time",
+      "name": "OWL-Time",
+      "summary": "A vocabulary for instants, intervals, durations, and temporal relations.",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "homepage": "https://www.w3.org/TR/owl-time/",
+      "source_url": "https://www.w3.org/2006/time.ttl",
+      "format": "turtle",
+      "nodes": 105,
+      "edges": 201,
+      "counts": {
+        "class": 21,
+        "property": 58,
+        "individual": 14,
+        "datatype": 12
+      }
+    },
+    {
+      "id": "prov-o",
+      "name": "PROV-O",
+      "summary": "A model of provenance: entities, activities, and the agents that act on them.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/prov-o/",
+      "source_url": "https://www.w3.org/ns/prov-o.ttl",
+      "format": "turtle",
+      "nodes": 102,
+      "edges": 207,
+      "counts": {
+        "class": 31,
+        "property": 70,
+        "individual": 0,
+        "datatype": 1
+      }
+    },
+    {
+      "id": "vcard",
+      "name": "vCard Ontology",
+      "summary": "Contact information: names, addresses, and communication channels.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/vcard-rdf/",
+      "source_url": "https://www.w3.org/2006/vcard/ns.ttl",
+      "format": "turtle",
+      "nodes": 148,
+      "edges": 81,
+      "counts": {
+        "class": 62,
+        "property": 84,
+        "individual": 0,
+        "datatype": 2
+      }
+    },
+    {
+      "id": "dcterms",
+      "name": "DCMI Metadata Terms",
+      "summary": "Dublin Core terms for describing resources, such as title, creator, and date.",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "homepage": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/",
+      "source_url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl",
+      "format": "turtle",
+      "nodes": 117,
+      "edges": 115,
+      "counts": {
+        "class": 41,
+        "property": 55,
+        "individual": 9,
+        "datatype": 12
+      }
+    },
+    {
+      "id": "rdfs",
+      "name": "RDF Schema",
+      "summary": "The RDF Schema vocabulary: classes, properties, and their relationships.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/rdf-schema/",
+      "source_url": "https://www.w3.org/2000/01/rdf-schema.ttl",
+      "format": "turtle",
+      "nodes": 16,
+      "edges": 33,
+      "counts": {
+        "class": 7,
+        "property": 9,
+        "individual": 0,
+        "datatype": 0
+      }
+    },
+    {
+      "id": "owl",
+      "name": "OWL 2 Schema",
+      "summary": "The OWL 2 schema: the classes and properties used to define ontologies.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/owl2-overview/",
+      "source_url": "https://www.w3.org/2002/07/owl.ttl",
+      "format": "turtle",
+      "nodes": 84,
+      "edges": 178,
+      "counts": {
+        "class": 32,
+        "property": 51,
+        "individual": 0,
+        "datatype": 1
+      }
+    },
+    {
+      "id": "wine",
+      "name": "Wine Ontology",
+      "summary": "The OWL guide's wine example: wines, wineries, grapes, and regions.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/owl-guide/",
+      "source_url": "https://www.w3.org/TR/owl-guide/wine.rdf",
+      "format": "rdfxml",
+      "nodes": 253,
+      "edges": 226,
+      "counts": {
+        "class": 78,
+        "property": 13,
+        "individual": 161,
+        "datatype": 1
+      }
+    },
+    {
+      "id": "food",
+      "name": "Food Ontology",
+      "summary": "The OWL guide's food example: courses, dishes, and what they contain.",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "homepage": "https://www.w3.org/TR/owl-guide/",
+      "source_url": "https://www.w3.org/TR/2004/REC-owl-guide-20040210/food.rdf",
+      "format": "rdfxml",
+      "nodes": 113,
+      "edges": 92,
+      "counts": {
+        "class": 64,
+        "property": 4,
+        "individual": 45,
+        "datatype": 0
+      }
+    },
+    {
+      "id": "schemaorg",
+      "name": "Schema.org",
+      "summary": "The Schema.org vocabulary for structured data about people, places, works, and other things.",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "homepage": "https://schema.org/docs/schemas.html",
+      "source_url": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+      "format": "jsonld",
+      "nodes": 3257,
+      "edges": 1752,
+      "counts": {
+        "class": 1039,
+        "property": 1694,
+        "individual": 524,
+        "datatype": 0
+      }
+    }
+  ]
+}
