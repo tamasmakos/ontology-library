@@ -1,0 +1,158 @@
+{
+  "ontologies": [
+    {
+      "id": "skos",
+      "name": "SKOS",
+      "source_url": "https://www.w3.org/2009/08/skos-reference/skos.rdf",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/skos.rdf",
+      "homepage": "https://www.w3.org/TR/skos-reference/"
+    },
+    {
+      "id": "foaf",
+      "name": "Friend of a Friend",
+      "source_url": "http://xmlns.com/foaf/spec/index.rdf",
+      "license": "CC BY 1.0",
+      "license_url": "http://creativecommons.org/licenses/by/1.0/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/foaf.rdf",
+      "homepage": "http://xmlns.com/foaf/spec/"
+    },
+    {
+      "id": "sioc",
+      "name": "SIOC Core Ontology",
+      "source_url": "http://rdfs.org/sioc/ns",
+      "license": "CC BY 1.0",
+      "license_url": "http://creativecommons.org/licenses/by/1.0/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/sioc.rdf",
+      "homepage": "http://sioc-project.org/"
+    },
+    {
+      "id": "goodrelations",
+      "name": "GoodRelations",
+      "source_url": "http://purl.org/goodrelations/v1.owl",
+      "license": "CC BY 3.0",
+      "license_url": "http://creativecommons.org/licenses/by/3.0/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/goodrelations.owl",
+      "homepage": "http://www.heppnetz.de/projects/goodrelations/"
+    },
+    {
+      "id": "bfo",
+      "name": "Basic Formal Ontology",
+      "source_url": "http://purl.obolibrary.org/obo/bfo.owl",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/bfo.owl",
+      "homepage": "http://basic-formal-ontology.org/"
+    },
+    {
+      "id": "owl-time",
+      "name": "OWL-Time",
+      "source_url": "https://www.w3.org/2006/time.ttl",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/time.ttl",
+      "homepage": "https://www.w3.org/TR/owl-time/"
+    },
+    {
+      "id": "prov-o",
+      "name": "PROV-O",
+      "source_url": "https://www.w3.org/ns/prov-o.ttl",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/prov-o.ttl",
+      "homepage": "https://www.w3.org/TR/prov-o/"
+    },
+    {
+      "id": "vcard",
+      "name": "vCard Ontology",
+      "source_url": "https://www.w3.org/2006/vcard/ns.ttl",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/vcard.ttl",
+      "homepage": "https://www.w3.org/TR/vcard-rdf/"
+    },
+    {
+      "id": "dcterms",
+      "name": "DCMI Metadata Terms",
+      "source_url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/dublin_core_terms.ttl",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/dcterms.ttl",
+      "homepage": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+    },
+    {
+      "id": "rdfs",
+      "name": "RDF Schema",
+      "source_url": "https://www.w3.org/2000/01/rdf-schema.ttl",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/rdfs.ttl",
+      "homepage": "https://www.w3.org/TR/rdf-schema/"
+    },
+    {
+      "id": "owl",
+      "name": "OWL 2 Schema",
+      "source_url": "https://www.w3.org/2002/07/owl.ttl",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "turtle",
+      "distribution": "vendored",
+      "path": "vendor/owl.ttl",
+      "homepage": "https://www.w3.org/TR/owl2-overview/"
+    },
+    {
+      "id": "wine",
+      "name": "Wine Ontology",
+      "source_url": "https://www.w3.org/TR/owl-guide/wine.rdf",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/wine.rdf",
+      "homepage": "https://www.w3.org/TR/owl-guide/"
+    },
+    {
+      "id": "food",
+      "name": "Food Ontology",
+      "source_url": "https://www.w3.org/TR/2004/REC-owl-guide-20040210/food.rdf",
+      "license": "W3C Document License",
+      "license_url": "https://www.w3.org/copyright/document-license/",
+      "format": "rdfxml",
+      "distribution": "vendored",
+      "path": "vendor/food.rdf",
+      "homepage": "https://www.w3.org/TR/owl-guide/"
+    },
+    {
+      "id": "schemaorg",
+      "name": "Schema.org",
+      "source_url": "https://schema.org/version/latest/schemaorg-current-https.jsonld",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "format": "jsonld",
+      "distribution": "vendored",
+      "path": "vendor/schema.jsonld",
+      "homepage": "https://schema.org/docs/schemas.html"
+    }
+  ]
+}
